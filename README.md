@@ -1,7 +1,8 @@
-# 🤖 AI CTO Agent By Zaid Alam
+
 
 <div align="center">
 
+# 🤖 AI CTO Agent By Zaid Alam
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Next.js](https://img.shields.io/badge/nextjs-19-green)
