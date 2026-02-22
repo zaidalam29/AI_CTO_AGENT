@@ -2,7 +2,9 @@
 
 <div align="center">
 
+
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/nextjs-19-green)
 ![Python](https://img.shields.io/badge/python-3.9+-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-orange)
 ![License](https://img.shields.io/badge/license-MIT-red)
@@ -381,7 +383,7 @@ open http://localhost:8000/docs    # Mac
 ## 📥 Installation Details
 
 ### Prerequisites
-- ✅ Python 3.10 or higher
+- ✅ Python 3.9 or higher
 - ✅ Git
 - ✅ 8GB RAM minimum
 - ✅ 4GB free disk space

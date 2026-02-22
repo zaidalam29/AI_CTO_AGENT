@@ -381,7 +381,7 @@ open http://localhost:8000/docs    # Mac
 ## 📥 Installation Details
 
 ### Prerequisites
-- ✅ Python 3.10 or higher
+- ✅ Python 3.9 or higher
 - ✅ Git
 - ✅ 8GB RAM minimum
 - ✅ 4GB free disk space
