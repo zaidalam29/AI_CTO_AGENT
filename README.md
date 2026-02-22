@@ -874,6 +874,4 @@ open http://localhost:8000/docs    # Mac
   
 **Made with ❤️ by Zaid Alam - Full Stack Developer + Gen AI/ML Engineer**
 
-[⭐ Star this repo](https://github.com/yourusername/ai_cto_agent) • [🐛 Report Bug](https://github.com/yourusername/ai_cto_agent/issues) • [📖 Read Docs](https://docs.aictoagent.com)
-
 </div>
