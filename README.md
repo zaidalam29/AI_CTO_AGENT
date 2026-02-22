@@ -1,4 +1,4 @@
-# 🤖 AI CTO Agent By Zaid Alam - Full Stack Developer • Gen AI/ML Engineer • RAG • Agentic AI
+# 🤖 AI CTO Agent By Zaid Alam
 
 <div align="center">
 
