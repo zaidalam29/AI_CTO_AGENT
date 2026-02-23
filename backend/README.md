@@ -1,8 +1,11 @@
-# 🤖 AI CTO Agent By Zaid Alam - Full Stack Developer • Gen AI/ML Engineer • RAG • Agentic AI
+
 
 <div align="center">
 
+# 🤖 AI CTO Agent By Zaid Alam
+
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/nextjs-16-green)
 ![Python](https://img.shields.io/badge/python-3.9+-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-orange)
 ![License](https://img.shields.io/badge/license-MIT-red)
@@ -56,24 +59,24 @@
 
 | Agent | Responsibility | Output |
 |-------|---------------|--------|
-| **Planner Agent** | Requirements analysis | ✅ Features, ✅ Tech stack, ✅ Estimates |
-| **Architect Agent** | System design | ✅ Architecture, ✅ Database, ✅ APIs |
-| **Risk Agent** | Risk assessment | ✅ Risk score, ✅ Mitigation strategies |
-| **Sprint Agent** | Agile planning | ✅ Sprints, ✅ User stories, ✅ Timeline |
-| **DevOps Agent** | Infrastructure | ✅ CI/CD, ✅ Monitoring, ✅ Backup |
-| **Code Review Agent** | Code quality | ✅ Quality score, ✅ Security issues |
+| **Planner Agent** | Requirements analysis | Features, Tech stack, Estimates |
+| **Architect Agent** | System design | Architecture, Database, APIs |
+| **Risk Agent** | Risk assessment | Risk score, Mitigation strategies |
+| **Sprint Agent** | Agile planning | Sprints, User stories, Timeline |
+| **DevOps Agent** | Infrastructure | CI/CD, Monitoring, Backup |
+| **Code Review Agent** | Code quality | Quality score, Security issues |
 
 ### 🚀 **Key Capabilities**
 
-- ✅ **Parallel Processing** - All agents work simultaneously
-- ✅ **ML-Powered** - Risk prediction using machine learning
-- ✅ **Vector Memory** - Learns from past projects using ChromaDB
-- ✅ **Multi-LLM Support** - OpenAI, OpenRouter, Cohere
-- ✅ **REST API** - Easy integration with any system
-- ✅ **Swagger UI** - Interactive API documentation
-- ✅ **Rate Limiting** - Prevent API abuse
-- ✅ **Request Tracking** - Unique ID for each request
-- ✅ **Comprehensive Logging** - Debug and monitor easily
+- **Parallel Processing** - All agents work simultaneously
+- **ML-Powered** - Risk prediction using machine learning
+- **Vector Memory** - Learns from past projects using ChromaDB
+- **Multi-LLM Support** - OpenAI, OpenRouter, Cohere
+- **REST API** - Easy integration with any system
+- **Swagger UI** - Interactive API documentation
+- **Rate Limiting** - Prevent API abuse
+- **Request Tracking** - Unique ID for each request
+- **Comprehensive Logging** - Debug and monitor easily
 
 ---
 
@@ -81,23 +84,23 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Client (Browser/API)                    │
+│                      Client (Browser/API)                   │
 └───────────────────────────────┬─────────────────────────────┘
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                     FastAPI Server (8000)                    │
+│                     FastAPI Server (8000)                   │
 ├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
-│  │   Routes    │  │ Middleware  │  │   Error     │         │
-│  │             │  │             │  │  Handlers   │         │
-│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │
+│  │   Routes    │  │ Middleware  │  │   Error     │          │
+│  │             │  │             │  │  Handlers   │          │
+│  └─────────────┘  └─────────────┘  └─────────────┘          │
 └───────────────────────────────┬─────────────────────────────┘
                                 │
                                 ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     ORCHESTRATOR                              │
-│              (Manages all agents in parallel)                 │
+┌───────────────────────────────────────────────────────────┐
+│                     ORCHESTRATOR                          │
+│              (Manages all agents in parallel)             │
 └───┬───────────┬───────────┬───────────┬───────────┬───────┘
     │           │           │           │           │
     ▼           ▼           ▼           ▼           ▼
@@ -110,8 +113,8 @@
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                 Vector Database (ChromaDB)                   │
-│              (Stores project history for learning)           │
+│                 Vector Database (ChromaDB)                  │
+│              (Stores project history for learning)          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -381,10 +384,10 @@ open http://localhost:8000/docs    # Mac
 ## 📥 Installation Details
 
 ### Prerequisites
-- ✅ Python 3.9 or higher
-- ✅ Git
-- ✅ 8GB RAM minimum
-- ✅ 4GB free disk space
+- Python 3.9 or higher
+- Git
+- 8GB RAM minimum
+- 4GB free disk space
 
 ### Step-by-Step Installation
 
@@ -613,18 +616,18 @@ def analyze_project(project_data):
         
         if response.status_code == 200:
             result = response.json()
-            print(f"✅ Success! Processing time: {result.get('processing_time')}")
+            print(f"Success! Processing time: {result.get('processing_time')}")
             return result
         else:
-            print(f"❌ Error {response.status_code}: {response.text}")
+            print(f"Error {response.status_code}: {response.text}")
             return None
             
     except requests.exceptions.Timeout:
-        print("❌ Request timed out")
+        print("Request timed out")
     except requests.exceptions.ConnectionError:
-        print("❌ Connection error - is the server running?")
+        print("Connection error - is the server running?")
     except Exception as e:
-        print(f"❌ Error: {str(e)}")
+        print(f"Error: {str(e)}")
     
     return None
 
@@ -793,11 +796,11 @@ We welcome contributions! Here's how:
 5. **Open a Pull Request**
 
 ### Development Guidelines
-- ✅ Follow PEP 8 style guide
-- ✅ Add docstrings for new functions
-- ✅ Add tests for new features
-- ✅ Update documentation
-- ✅ Use type hints
+- Follow PEP 8 style guide
+- Add docstrings for new functions
+- Add tests for new features
+- Update documentation
+- Use type hints
 
 ---
 

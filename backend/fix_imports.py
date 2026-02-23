@@ -46,12 +46,12 @@ def fix_imports():
                         lines.insert(0, imp.strip())
                     
                     content = '\n'.join(lines)
-                    print(f"✅ Added {imp.strip()} to {file_path}")
+                    print(f"Added {imp.strip()} to {file_path}")
             
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
         else:
-            print(f"❌ File not found: {file_path}")
+            print(f"File not found: {file_path}")
 
 if __name__ == "__main__":
     fix_imports()

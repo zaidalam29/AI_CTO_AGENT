@@ -113,7 +113,7 @@ async def analyze_project(
             
             processing_time = time.time() - start_time
             success = True
-            log.info(f"✅ All agents completed in {processing_time:.2f}s")
+            log.info(f"All agents completed in {processing_time:.2f}s")
             
             # Update metrics in background
             background_tasks.add_task(
@@ -164,7 +164,7 @@ async def analyze_project(
                 processing_time=processing_time
             )
             
-            log.error(f"❌ Error: {str(e)}", exc_info=True)
+            log.error(f"Error: {str(e)}", exc_info=True)
             return JSONResponse(
                 status_code=500,
                 content={

@@ -27,7 +27,7 @@ class Orchestrator:
         self.code_review = CodeReviewAgent()
         self.vector_store = VectorStore()
         
-        logger.info(f"✅ Orchestrator initialized with {len(self.get_active_agents())} agents")
+        logger.info(f"Orchestrator initialized with {len(self.get_active_agents())} agents")
     
     def get_active_agents(self) -> List[str]:
         """Get list of active agents"""
@@ -115,12 +115,12 @@ class Orchestrator:
             )
             
             processing_time = time.time() - start_time
-            logger.info(f"✅ All agents completed in {processing_time:.2f} seconds")
+            logger.info(f"All agents completed in {processing_time:.2f} seconds")
             
             return final_response
             
         except Exception as e:
-            logger.error(f"❌ Orchestrator error: {str(e)}")
+            logger.error(f"Orchestrator error: {str(e)}")
             import traceback
             traceback.print_exc()
             raise AppException(f"Orchestrator failed: {str(e)}")
@@ -187,7 +187,7 @@ class Orchestrator:
     def _handle_agent_result(self, result: Any, agent_name: str) -> Dict:
         """Handle individual agent results (including errors)"""
         if isinstance(result, Exception):
-            logger.error(f"❌ {agent_name} agent failed: {str(result)}")
+            logger.error(f"{agent_name} agent failed: {str(result)}")
             return {
                 "status": "error",
                 "error": str(result),
@@ -210,7 +210,7 @@ class Orchestrator:
     def _handle_agent_result(self, result: Any, agent_name: str) -> Dict:
         """Handle individual agent results (including errors)"""
         if isinstance(result, Exception):
-            logger.error(f"❌ {agent_name} agent failed: {str(result)}")
+            logger.error(f"{agent_name} agent failed: {str(result)}")
             return {
                 "status": "error",
                 "error": str(result),
@@ -224,8 +224,8 @@ class Orchestrator:
     def _is_success(self, result: Any) -> str:
         """Check if agent succeeded"""
         if isinstance(result, dict) and result.get("status") == "error":
-            return "❌ Failed"
-        return "✅ Success"
+            return "Failed"
+        return "Success"
     
     def _combine_agent_results(
         self,
