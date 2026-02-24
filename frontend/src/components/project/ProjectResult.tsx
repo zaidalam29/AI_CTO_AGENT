@@ -4,10 +4,6 @@ import { ApiResponse } from '@/types/project.types';
 import { motion } from 'framer-motion';
 import TypingEffect from '@/components/ui/TypingEffect';
 import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 
 interface ProjectResultProps {

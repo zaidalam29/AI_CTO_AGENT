@@ -1,4 +1,3 @@
-// src/hooks/useProjectAnalysis.ts
 import { useState, useCallback, useRef } from 'react';
 import { ProjectRequest, ApiResponse } from '@/types/project.types';
 import apiService from '@/services/api';
@@ -23,12 +22,15 @@ export const useProjectAnalysis = (): UseProjectAnalysisReturn => {
   const [error, setError] = useState<string | null>(null);
   const [streamingText, setStreamingText] = useState('');
   
-  const progressInterval = useRef<NodeJS.Timeout>();
-  const streamingInterval = useRef<NodeJS.Timeout>();
+  const progressInterval = useRef<NodeJS.Timeout | null>(null);
+  const streamingInterval = useRef<NodeJS.Timeout | null>(null);
 
   // Simulate progress for better UX
   const startProgressSimulation = () => {
     setProgress(0);
+    if (progressInterval.current) {
+      clearInterval(progressInterval.current);
+    }
     progressInterval.current = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 90) return prev;
@@ -44,14 +46,21 @@ export const useProjectAnalysis = (): UseProjectAnalysisReturn => {
     
     setStreamingText('');
     
+    if (streamingInterval.current) {
+      clearInterval(streamingInterval.current);
+    }
+    
     streamingInterval.current = setInterval(() => {
       if (index < words.length) {
         setStreamingText((prev) => prev + ' ' + words[index]);
         index++;
       } else {
-        clearInterval(streamingInterval.current);
+        if (streamingInterval.current) {
+          clearInterval(streamingInterval.current);
+          streamingInterval.current = null;
+        }
       }
-    }, 50); // 50ms per word
+    }, 50);
   };
 
   const analyze = useCallback(async (data: ProjectRequest) => {
@@ -68,6 +77,7 @@ export const useProjectAnalysis = (): UseProjectAnalysisReturn => {
       // Clear progress interval
       if (progressInterval.current) {
         clearInterval(progressInterval.current);
+        progressInterval.current = null;
       }
       setProgress(100);
 
@@ -105,9 +115,11 @@ export const useProjectAnalysis = (): UseProjectAnalysisReturn => {
     apiService.cancelRequest();
     if (progressInterval.current) {
       clearInterval(progressInterval.current);
+      progressInterval.current = null;
     }
     if (streamingInterval.current) {
       clearInterval(streamingInterval.current);
+      streamingInterval.current = null;
     }
     setLoading(false);
     setProgress(0);
@@ -125,6 +137,7 @@ export const useProjectAnalysis = (): UseProjectAnalysisReturn => {
     setStreamingText('');
     if (streamingInterval.current) {
       clearInterval(streamingInterval.current);
+      streamingInterval.current = null;
     }
   }, []);
 

@@ -7,7 +7,6 @@ import ProjectResult from '@/components/project/ProjectResult';
 import LoadingAnimation from '@/components/project/LoadingAnimation';
 import { useProjectAnalysis } from '@/hooks/useProjectAnalysis';
 import { ProjectRequest } from '@/types/project.types';
-import toast from 'react-hot-toast';
 
 export default function Home() {
   const {
@@ -17,7 +16,6 @@ export default function Home() {
     response,
     error,
     streamingText,
-    cancelAnalysis,
     reset,
   } = useProjectAnalysis();
 
@@ -36,6 +34,14 @@ export default function Home() {
     reset();
     setShowResult(false);
   };
+
+  {
+    error && (
+      <div className="alert-error mb-4">
+        Error: {error}
+      </div>
+    )
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -77,7 +83,7 @@ export default function Home() {
             >
               {/* Hero Section */}
               <div className="text-center mb-12">
-                <motion.h2 
+                <motion.h2
                   className="text-4xl font-bold text-gray-900 mb-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -88,7 +94,7 @@ export default function Home() {
                     Technical Excellence
                   </span>
                 </motion.h2>
-                <motion.p 
+                <motion.p
                   className="text-xl text-gray-600"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -99,7 +105,7 @@ export default function Home() {
               </div>
 
               {/* Stats */}
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -132,7 +138,7 @@ export default function Home() {
               </motion.div>
 
               {/* Features */}
-              <motion.div 
+              <motion.div
                 className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -185,13 +191,13 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               {loading ? (
-                <LoadingAnimation 
-                  progress={progress} 
+                <LoadingAnimation
+                  progress={progress}
                   agents={response?.agents_used || ['planner', 'architect', 'risk', 'sprint', 'devops']}
                 />
               ) : (
-                <ProjectResult 
-                  response={response} 
+                <ProjectResult
+                  response={response}
                   streamingText={streamingText}
                   onReset={handleReset}
                 />
@@ -205,7 +211,7 @@ export default function Home() {
       <footer className="bg-white border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-center text-gray-600 text-sm">
-           Copyright © 2024 AI CTO Agent
+            Copyright © 2024 AI CTO Agent
           </p>
         </div>
       </footer>

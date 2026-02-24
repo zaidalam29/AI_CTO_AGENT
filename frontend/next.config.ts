@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
+        protocol: 'http',
+        hostname: 'backend',
+        port: '8000',
+        pathname: '/**',
+      },
+      {
         protocol: 'https',
         hostname: '**',
       },
@@ -45,60 +51,40 @@ const nextConfig: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; connect-src 'self' http://localhost:8000 https://localhost:8000;".replace(/\s+/g, ' ').trim(),
-          },
         ],
       },
     ];
   },
 
-  // Rewrites with increased timeouts
+  // Rewrites
   async rewrites() {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://backend:8000';
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8000/api/:path*',
-        // Add timeout configuration
-        has: [],
-        missing: [],
+        destination: `${apiUrl}/api/:path*`,
       },
     ];
   },
 
-  // Increase server timeout
-  serverRuntimeConfig: {
-    // This will be merged with the default config
-    api: {
-      bodyParser: {
-        sizeLimit: '10mb',
-      },
-      responseLimit: false,
-    },
-  },
-
-  // Increase timeout for API routes
+  // ✅ Next.js 16.1.6 - valid options
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    serverComponentsExternalPackages: ['axios'],
-    // Increase proxy timeout
-    proxyTimeout: 120000, // 2 minutes
+    // serverComponentsExternalPackages: ['axios'],  // ❌ Ye nahi chalega
+    // proxyTimeout: 120000,  // ❌ Ye bhi nahi chalega
   },
 
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
-  },
-
+  // ✅ Next.js 16.1.6 - valid root options
   output: 'standalone',
-  generateEtags: true,
-  compress: true,
-  trailingSlash: false,
-  assetPrefix: process.env.ASSET_PREFIX || '',
   poweredByHeader: false,
+  trailingSlash: false,
+  compress: true,
+  generateEtags: true,
+  
+  // Agar inhe use karna hai to is tarah use karo:
+  // serverExternalPackages abhi support nahi hai 16.1.6 mein
+  // proxyTimeout abhi support nahi hai
 };
 
 export default nextConfig;

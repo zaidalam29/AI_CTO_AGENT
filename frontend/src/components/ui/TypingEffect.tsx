@@ -1,4 +1,3 @@
-// src/components/ui/TypingEffect.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -22,17 +21,27 @@ export default function TypingEffect({
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    // Reset when text changes
+    setDisplayedText('');
+    setCurrentIndex(0);
+    setIsComplete(false);
+  }, [text]);
+
+  useEffect(() => {
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayedText(prev => prev + text[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, speed);
 
-      return () => clearTimeout(timeout);
-    } else if (!isComplete) {
+      return () => clearTimeout(timeout);  // ✅ Cleanup return
+    } else if (!isComplete && currentIndex === text.length) {
       setIsComplete(true);
       onComplete?.();
     }
+    
+    // ✅ Always return something (undefined is fine)
+    return undefined;
   }, [currentIndex, text, speed, isComplete, onComplete]);
 
   return (
