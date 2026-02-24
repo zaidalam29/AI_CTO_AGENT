@@ -875,6 +875,6 @@ open http://localhost:8000/docs    # Mac
 
 <div align="center">
   
-**Made with by Zaid Alam - Full Stack Developer + Gen AI/ML Engineer**
+**Made by Zaid Alam - Full Stack Developer + Gen AI/ML Engineer**
 
 </div>
